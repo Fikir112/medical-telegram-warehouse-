@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_channels
+    description: "One row per Telegram channel with metadata and aggregate stats"
+    columns:
+      - name: channel_key
+        description: "Surrogate key"
+        tests: [unique, not_null]
+      - name: channel_name
+        tests: [unique, not_null]
+      - name: channel_type
+        tests:
+          - accepted_values:
+              values: ['Medical', 'Cosmetics', 'Pharmaceutical', 'Other']
+
+  - name: dim_dates
+    description: "Date dimension derived from message timestamps"
+    columns:
+      - name: date_key
+        tests: [unique, not_null]
+      - name: full_date
+        tests: [unique, not_null]
+
+  - name: fct_messages
+    description: "Fact table — one row per Telegram message"
+    columns:
+      - name: message_id
+        tests: [unique, not_null]
+      - name: channel_key
+        tests: [not_null]
+      - name: date_key
+        tests: [not_null]

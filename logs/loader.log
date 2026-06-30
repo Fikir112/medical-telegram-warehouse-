@@ -1,0 +1,12 @@
+2026-06-30 23:10:34,710 | INFO | Table raw_telegram_messages ready.
+2026-06-30 23:10:34,711 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\CheMed123.json
+2026-06-30 23:12:25,734 | INFO | Table raw_telegram_messages ready.
+2026-06-30 23:12:25,734 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\CheMed123.json
+2026-06-30 23:13:52,967 | INFO | Table raw_telegram_messages ready.
+2026-06-30 23:13:52,968 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\CheMed123.json
+2026-06-30 23:13:53,049 | INFO |   Inserted 50 rows from CheMed123.json
+2026-06-30 23:13:53,049 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\lobelia4cosmetics.json
+2026-06-30 23:13:53,115 | INFO |   Inserted 50 rows from lobelia4cosmetics.json
+2026-06-30 23:13:53,116 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\tikvahpharma.json
+2026-06-30 23:13:53,219 | INFO |   Inserted 50 rows from tikvahpharma.json
+2026-06-30 23:13:53,220 | INFO | Load complete. Total rows inserted: 150
