@@ -1,8 +1,5 @@
 """
 Telegram scraper for medical/pharmacy channels.
-Scrapes messages + images and dumps raw, untouched JSON to the data lake
-(data/raw/telegram_messages/YYYY-MM-DD/channel_name.json), and images to
-data/raw/images/{channel_name}/{message_id}.jpg.
 """
 
 import asyncio
@@ -15,10 +12,6 @@ from pathlib import Path
 from dotenv import load_dotenv
 from telethon.sync import TelegramClient
 from telethon.tl.types import MessageMediaPhoto
-
-# ---------------------------------------------------------------------------
-# Setup
-# ---------------------------------------------------------------------------
 
 load_dotenv()
 
@@ -43,38 +36,26 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Public channels to scrape (usernames, no "@")
 CHANNELS = [
     "CheMed123",
     "lobelia4cosmetics",
     "tikvahpharma",
 ]
 
-# How many messages to pull per channel (keep modest for time constraints)
-MESSAGE_LIMIT = 50
+MESSAGE_LIMIT = 500
 
-
-# ---------------------------------------------------------------------------
-# Core scraping logic
-# ---------------------------------------------------------------------------
 
 def message_to_dict(message, channel_name: str) -> dict:
-    """
-    Preserve the original Telegram API message structure (via Telethon's
-    to_dict()), and just attach a couple of pipeline-tracking fields.
-    This keeps the raw layer truly raw, per the data lake requirement.
-    """
     raw = message.to_dict()
     has_image = isinstance(message.media, MessageMediaPhoto)
-
     return {
-        "raw": json.loads(json.dumps(raw, default=str)),  # full original structure, datetime-safe
+        "raw": json.loads(json.dumps(raw, default=str)),
         "channel_name": channel_name,
         "message_id": message.id,
         "message_date": message.date.isoformat() if message.date else None,
         "message_text": message.message,
         "has_image": has_image,
-        "image_path": None,  # filled in after download if has_image
+        "image_path": None,
         "scraped_at": datetime.now(timezone.utc).isoformat(),
     }
 
@@ -97,7 +78,18 @@ async def scrape_channel(client: TelegramClient, channel_name: str) -> list[dict
         record = message_to_dict(message, channel_name)
 
         if record["has_image"]:
-           pass
+            try:
+                image_filename = f"{message.id}.jpg"
+                image_path = channel_image_dir / image_filename
+                await client.download_media(message, file=str(image_path))
+                record["image_path"] = str(
+                    image_path.relative_to(PROJECT_ROOT)
+                ).replace("\\", "/")
+            except Exception as e:
+                logger.warning(
+                    f"Failed to download image for message {message.id} "
+                    f"in {channel_name}: {e}"
+                )
 
         messages_out.append(record)
         count += 1

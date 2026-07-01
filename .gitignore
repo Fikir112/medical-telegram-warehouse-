@@ -16,3 +16,4 @@ medical_warehouse/logs/
 .vscode/*
 !.vscode/settings.json
 .DS_Store
+yolov8n.pt

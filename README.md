@@ -66,6 +66,17 @@ medical-telegram-warehouse/
 | Tikvah Pharma | tikvahpharma | Pharmaceuticals |
 
 ---
+## Architecture
+
+```
+Telegram Channels → Scraper → Data Lake (JSON) → PostgreSQL → dbt Star Schema
+                                     ↓
+                              YOLO Enrichment → image_detections table
+                                     ↓
+                              FastAPI (REST API)
+                                     ↓
+                              Dagster (Orchestration)
+```
 
 ## Setup
 
@@ -100,6 +111,61 @@ dbt test --profiles-dir .
 ```
 
 ---
+## Running the Pipeline
+
+**Step 1 — Scrape:**
+```bash
+python src/scraper.py
+```
+
+**Step 2 — Load:**
+```bash
+python src/load_to_postgres.py
+```
+
+**Step 3 — Transform:**
+```bash
+cd medical_warehouse
+dbt run --profiles-dir .
+dbt test --profiles-dir .
+```
+
+**Step 4 — YOLO Enrichment:**
+```bash
+python src/yolo_enrichment.py
+```
+
+**Step 5 — API:**
+```bash
+uvicorn api.main:app --reload
+```
+
+**Step 6 — Orchestrate:**
+```bash
+dagster dev -f orchestration/dagster_pipeline.py
+```
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | Health check |
+| GET | `/channels` | All channels with stats |
+| GET | `/messages/top` | Most recent messages |
+| GET | `/messages/search?q=term` | Search messages |
+| GET | `/messages/channel/{name}` | Messages by channel |
+| GET | `/detections/top` | Top YOLO detections |
+| GET | `/stats` | Overall warehouse stats |
+
+## Tech Stack
+
+- Python 3.14
+- Telethon (Telegram API)
+- PostgreSQL + psycopg v3
+- dbt-postgres
+- YOLOv8n (Ultralytics)
+- FastAPI + Uvicorn
+- Dagster
 
 ## Star Schema
 

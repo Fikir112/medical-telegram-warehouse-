@@ -10,3 +10,19 @@
 2026-06-30 23:13:53,116 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\tikvahpharma.json
 2026-06-30 23:13:53,219 | INFO |   Inserted 50 rows from tikvahpharma.json
 2026-06-30 23:13:53,220 | INFO | Load complete. Total rows inserted: 150
+2026-07-01 14:53:20,373 | INFO | Table raw_telegram_messages ready.
+2026-07-01 14:53:20,374 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\CheMed123.json
+2026-07-01 14:53:21,214 | INFO |   Inserted 76 rows from CheMed123.json
+2026-07-01 14:53:21,214 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\lobelia4cosmetics.json
+2026-07-01 14:53:22,308 | INFO |   Inserted 500 rows from lobelia4cosmetics.json
+2026-07-01 14:53:22,308 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\tikvahpharma.json
+2026-07-01 14:53:23,295 | INFO |   Inserted 500 rows from tikvahpharma.json
+2026-07-01 14:53:23,296 | INFO | Load complete. Total rows inserted: 1076
+2026-07-01 15:19:16,755 | INFO | Table raw_telegram_messages ready.
+2026-07-01 15:19:16,759 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\CheMed123.json
+2026-07-01 15:19:16,828 | INFO |   Inserted 76 rows from CheMed123.json
+2026-07-01 15:19:16,829 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\lobelia4cosmetics.json
+2026-07-01 15:19:17,317 | INFO |   Inserted 500 rows from lobelia4cosmetics.json
+2026-07-01 15:19:17,318 | INFO | Loading C:\Users\HP\OneDrive\Desktop\10 ACADAMY FILES\medical-telegram-warehouse-\data\raw\telegram_messages\2026-06-30\tikvahpharma.json
+2026-07-01 15:19:17,994 | INFO |   Inserted 500 rows from tikvahpharma.json
+2026-07-01 15:19:17,995 | INFO | Load complete. Total rows inserted: 1076

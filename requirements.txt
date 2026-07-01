@@ -2,3 +2,9 @@ telethon==1.36.0
 python-dotenv==1.0.1
 psycopg[binary]>=3.2.0
 pandas>=2.2.3
+ultralytics>=8.0.0
+dbt-postgres>=1.8.0
+fastapi>=0.110.0
+uvicorn>=0.29.0
+dagster>=1.7.0
+dagster-webserver>=1.7.0
